@@ -1,6 +1,6 @@
 import {ajax} from 'rxjs/ajax';
-import {Observable, of} from 'rxjs';
-import {expand, map, mergeAll, subscribeOn, take, toArray} from 'rxjs/operators';
+import {from, Observable, of} from 'rxjs';
+import {distinct, expand, map, mergeAll, subscribeOn, take, tap, toArray} from 'rxjs/operators';
 import {async} from 'rxjs/internal/scheduler/async';
 import {toSchedule, toScheduleBridge} from './schedule/parsing/schedule-parser.service';
 import {ILocalStorageShow, ISchedule, ISong} from './schedule/parsing/ISchedule';
@@ -20,12 +20,8 @@ class TsumugiServiceFactory {
     );
   }
 
-  saveHistory(history: Array<ISong>): void {
-    localStorage.setItem('history', JSON.stringify(history))
-  }
-
   retrieveHistory(): Observable<Array<ISong>> {
-    const rawData = localStorage.getItem('history');
+    const rawData = this.getHistoryFromLocalStorage();
     return of(rawData)
       .pipe(
         map(rawData => rawData ? JSON.parse(rawData) as Array<ILocalStorageShow> : [] as Array<ILocalStorageShow>),
@@ -37,15 +33,25 @@ class TsumugiServiceFactory {
         })),
         toArray()
       )
+  }
 
-    // const rawHistory: Array<ILocalStorageShow> = data ? JSON.parse(data) : [];
+  saveHistory(schedule: ISchedule, history: Array<ISong>): Observable<Array<ISong>> {
+    return from([schedule.song.previous, ...history])
+      .pipe(
+        distinct(song => song.startTime.toISOString()),
+        toArray(),
+        tap(history => this.setHistoryToLocaleStorage(history))
+      )
+  }
 
-    // rawHistory.forEach((song: any) => {
-    //   song.startTime = moment(song.startTime);
-    //   song.endTime = moment(song.endTime);
-    // });
+  // This two local storage method could be isolated
 
-    // return rawHistory as Array<ISong>;
+  private getHistoryFromLocalStorage(): string | null {
+    return localStorage.getItem('history');
+  }
+
+  private setHistoryToLocaleStorage(history: Array<ISong>) {
+    localStorage.setItem('history', JSON.stringify(history))
   }
 }
 
