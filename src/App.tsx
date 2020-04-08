@@ -61,7 +61,12 @@ function App() {
         <Footer>
           <Row justify="center">
             <Col flex="900px">
-              Radio website: <a href="https://tsumugi.forum-thalie.fr">https://tsumugi.forum-thalie.fr</a>
+              <div>
+                Radio: <a href="https://tsumugi.forum-thalie.fr">https://tsumugi.forum-thalie.fr</a>
+              </div>
+              <div>
+                Communauté: <a href="https://forum-thalie.fr/">https://forum-thalie.fr/</a>
+              </div>
             </Col>
           </Row>
         </Footer>

@@ -21,10 +21,10 @@ class TsumugiServiceFactory {
   }
 
   retrieveHistory(): Observable<Array<ISong>> {
-    const rawData = this.getHistoryFromLocalStorage();
-    return of(rawData)
+    const rawHistory = this.getHistoryFromLocalStorage();
+    return of(rawHistory)
       .pipe(
-        map(rawData => rawData ? JSON.parse(rawData) as Array<ILocalStorageShow> : [] as Array<ILocalStorageShow>),
+        map(rawHistory => (rawHistory ? JSON.parse(rawHistory) : []) as Array<ILocalStorageShow> ),
         mergeAll(),
         map(rawHistory => ({
           name: rawHistory.name,
