@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Fragment } from 'react';
 import {Table, Tooltip, Typography} from 'antd';
 import {ISong} from '../services/schedule/parsing/ISchedule';
 
@@ -33,7 +33,7 @@ function PreviousSongList(props: PreviousSongListProps) {
   );
 
   return (
-    <React.Fragment>
+    <Fragment>
       <Title level={2}>Previously</Title>
 
       <Table dataSource={props.history}
@@ -42,7 +42,7 @@ function PreviousSongList(props: PreviousSongListProps) {
         {TimeColumn}
         {SongColumn}
       </Table>
-    </React.Fragment>
+    </Fragment>
   );
 }
 

@@ -1,7 +1,7 @@
-import React from 'react';
+import React, { Fragment } from 'react';
 import {Table, Typography} from 'antd';
 import {ISchedule} from '../../services/schedule/parsing/ISchedule';
-import {getProgramTableData} from './ProgramService';
+import {getProgramTableRows, IProgramTableRow} from './ProgramTableRows';
 
 type ScheduleProps = {
   schedule: ISchedule | undefined
@@ -10,36 +10,38 @@ type ScheduleProps = {
 function Program(props: ScheduleProps) {
   const { Column } = Table;
   const { Title } = Typography;
-  const table = props.schedule ? getProgramTableData(props.schedule) : [];
+  const rows = props.schedule ? getProgramTableRows(props.schedule) : [];
 
+  const LabelColumnRender = (value: string, row: IProgramTableRow) => row.renderLabel(row);
   const LabelColumn = (
     <Column className="nowrap"
-            title="Name"
-            dataIndex="label"
-            key="key" />
+            key="key"
+            render={LabelColumnRender}/>
   );
 
-  const DataColumn = (
-    <Column title="Name"
-            dataIndex="data"
-            key="key" />
+  const EventColumnRender = (value: string, row: IProgramTableRow) => row.renderEvent(row);
+  const EventColumn = (
+    <Column className="nowrap"
+            key="key"
+            render={EventColumnRender}
+    />
   );
 
   return (
-    <React.Fragment>
+    <Fragment>
       <Title level={2}>
         Program
       </Title>
 
       <Table loading={!props.schedule}
-             dataSource={table}
+             dataSource={rows}
              rowKey="key"
              showHeader={false}
              pagination={false}>
         {LabelColumn}
-        {DataColumn}
+        {EventColumn}
       </Table>
-    </React.Fragment>
+    </Fragment>
   );
 }
 

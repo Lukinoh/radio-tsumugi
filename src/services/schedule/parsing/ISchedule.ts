@@ -15,16 +15,16 @@ export interface ISchedule {
   getNextSongIn: () => number
 }
 
-export interface ISong {
+export interface IEvent {
   name: string;
   startTime: Moment;
   endTime: Moment;
 }
 
-export interface IShow {
-  name: string;
-  startTime: Moment;
-  endTime: Moment;
+export interface ISong extends IEvent {
+}
+
+export interface IShow extends IEvent {
 }
 
 export interface ILocalStorageShow {

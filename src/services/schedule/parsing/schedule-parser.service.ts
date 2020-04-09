@@ -8,6 +8,7 @@ export const toScheduleBridge = (response: string): IScheduleBridge => {
 
   // Smart way to remove first and last character
   // Replace &quot; with "
+  // FIXME: There is other stuff to decode like &lt; and the other
   return JSON.parse(response.replace(/&quot;/g, '\\"').slice(1, -1)) as IScheduleBridge;
 };
 

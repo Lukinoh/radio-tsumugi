@@ -1,11 +1,14 @@
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## TODO
-
-- Isolate CSS
+- Style in React is "beh"
 - Isolate footer
 - Better folder structure for services folder
 - Extract URLs, http://shelter.mahoro-net.org:8000/tsumugi and https://cors-anywhere.herokuapp.com/https://tsumugi.forum-thalie.fr/get_api_result.php from the code
+- Mieux afficher quand la prochaine chanson commence    
+- Use audio programmatically
+- Rename service to STsumugi, interface to IInterface and enum to EMyEnum
+- Filtre dans la table de previously par range d'heure ou nom
 
 ## Available Scripts
 

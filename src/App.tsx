@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useEffect, useState} from 'react';
 import './App.css';
 import Radio from './components/Radio';
 import {TsumugiService} from './services/tsumugi.service';
@@ -10,10 +10,10 @@ import {Col, Layout, Row, Typography} from 'antd';
 function App() {
   const {Title} = Typography;
   const {Content, Footer} = Layout;
-  const [schedule, setSchedule] = React.useState<ISchedule>();
-  const [history, setHistory] = React.useState<Array<ISong>>([]);
+  const [schedule, setSchedule] = useState<ISchedule>();
+  const [history, setHistory] = useState<Array<ISong>>([]);
 
-  React.useEffect(() => {
+  useEffect(() => {
     TsumugiService.getSchedule()
       .subscribe(newSchedule => {
         console.log(newSchedule);
@@ -24,10 +24,12 @@ function App() {
       .subscribe(newHistory => {
         console.log(newHistory);
         setHistory(newHistory);
+      }, error => {
+        alert('RESTART THE PAGE');
       });
   }, []);
 
-  React.useEffect(() => {
+  useEffect(() => {
     if (schedule) {
       TsumugiService.saveHistory(schedule, history)
         .subscribe(newHistory => {
