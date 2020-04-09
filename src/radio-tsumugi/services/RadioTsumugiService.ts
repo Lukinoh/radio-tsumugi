@@ -11,7 +11,7 @@ class RadioTsumugiServiceFactory {
 
   getSchedule(delay: number = 0): Observable<ISchedule> {
     return ajax({
-      url: AppConfigService.RADIO_URL,
+      url: AppConfigService.SCHEDULE_URL,
       responseType: 'text'
     }).pipe(
       // Sometimes a random cors error appears, so we have to retry to call it.

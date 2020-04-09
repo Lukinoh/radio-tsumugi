@@ -1,0 +1,1 @@
+export const searchSubstr = (str: string, searchString: string): boolean => str.toLowerCase().includes(searchString.toLowerCase());

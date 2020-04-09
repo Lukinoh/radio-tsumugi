@@ -21,8 +21,7 @@ function Program(props: ScheduleProps) {
 
   const EventColumnRender = (value: string, row: IProgramTableRow) => row.renderEvent(row);
   const EventColumn = (
-    <Column className="nowrap"
-            key="key"
+    <Column key="key"
             render={EventColumnRender}
     />
   );

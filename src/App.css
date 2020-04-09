@@ -21,3 +21,8 @@
 .nowrap {
   white-space: nowrap;
 }
+
+.Previously-search {
+  width: 200px;
+  margin-bottom: 8px;
+}
