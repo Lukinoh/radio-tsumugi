@@ -1,8 +1,6 @@
-import React, { Fragment } from 'react';
+import React from 'react';
 import {Statistic} from 'antd';
-import {IEvent} from '../services/schedule/parsing/ISchedule';
-
-type CountdownProps = typeof Statistic.Countdown['defaultProps'];
+import {IEvent} from '../radio-tsumugi/services/schedule/ISchedule';
 
 interface EventCountdownProps {
   event: IEvent
@@ -22,7 +20,7 @@ function EvenCountdown(props: EventCountdownProps) {
   return (
     <Countdown valueStyle={style} value={props.event.endTime.toISOString()} format="mm:ss">
     </Countdown>
-  )
+  );
 }
 
 export default EvenCountdown;

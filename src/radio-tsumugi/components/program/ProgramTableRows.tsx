@@ -1,6 +1,6 @@
 import React, {Fragment} from 'react';
-import {IEvent, ISchedule} from '../../services/schedule/parsing/ISchedule';
-import EvenCountdown from '../EvenCountdown';
+import {IEvent, ISchedule} from '../../services/schedule/ISchedule';
+import EvenCountdown from '../../../components/EvenCountdown';
 
 export interface IProgramTableRow {
   key: number;

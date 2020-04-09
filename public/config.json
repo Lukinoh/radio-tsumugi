@@ -1,0 +1,4 @@
+{
+  "radioUrl": "http://shelter.mahoro-net.org:8000/tsumugi",
+  "scheduleUrl": "https://cors-anywhere.herokuapp.com/https://tsumugi.forum-thalie.fr/get_api_result.php"
+}

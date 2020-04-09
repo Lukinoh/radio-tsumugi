@@ -1,6 +1,6 @@
 import React, { Fragment } from 'react';
 import {Table, Typography} from 'antd';
-import {ISchedule} from '../../services/schedule/parsing/ISchedule';
+import {ISchedule} from '../../services/schedule/ISchedule';
 import {getProgramTableRows, IProgramTableRow} from './ProgramTableRows';
 
 type ScheduleProps = {

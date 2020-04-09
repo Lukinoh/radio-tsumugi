@@ -1,6 +1,6 @@
 import React, { Fragment } from 'react';
 import {Table, Tooltip, Typography} from 'antd';
-import {ISong} from '../services/schedule/parsing/ISchedule';
+import {ISong} from '../services/schedule/ISchedule';
 
 type PreviousSongListProps = {
   history: Array<ISong>;

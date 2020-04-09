@@ -1,18 +1,21 @@
 import {ajax} from 'rxjs/ajax';
 import {from, Observable, of} from 'rxjs';
-import {distinct, expand, map, mergeAll, subscribeOn, take, tap, toArray} from 'rxjs/operators';
+import {distinct, expand, map, mergeAll, retry, subscribeOn, take, tap, toArray} from 'rxjs/operators';
 import {async} from 'rxjs/internal/scheduler/async';
-import {toSchedule, toScheduleBridge} from './schedule/parsing/schedule-parser.service';
-import {ILocalStorageShow, ISchedule, ISong} from './schedule/parsing/ISchedule';
+import {toSchedule, toScheduleBridge} from './schedule/ScheduleParserService';
+import {ILocalStorageShow, ISchedule, ISong} from './schedule/ISchedule';
 import moment from 'moment';
+import {AppConfigService} from '../../services/AppConfigService';
 
-class TsumugiServiceFactory {
+class RadioTsumugiServiceFactory {
 
   getSchedule(delay: number = 0): Observable<ISchedule> {
     return ajax({
-      url: 'https://cors-anywhere.herokuapp.com/https://tsumugi.forum-thalie.fr/get_api_result.php',
+      url: AppConfigService.RADIO_URL,
       responseType: 'text'
     }).pipe(
+      // Sometimes a random cors error appears, so we have to retry to call it.
+      retry(),
       subscribeOn(async, delay),
       map(({response}) => toScheduleBridge(response)),
       map((scheduleBridge) => toSchedule(scheduleBridge)),
@@ -55,4 +58,4 @@ class TsumugiServiceFactory {
   }
 }
 
-export const TsumugiService = new TsumugiServiceFactory();
+export const RadioTsumugiService = new RadioTsumugiServiceFactory();

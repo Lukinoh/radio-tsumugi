@@ -1,12 +1,13 @@
 import React from 'react';
-import image from '../assets/tsumugi.gif';
+import image from '../../assets/tsumugi.gif';
 import {Card} from 'antd';
+import {AppConfigService} from '../../services/AppConfigService';
 
 function Radio() {
 
   const Audio = (
     <audio className="Radio-player"
-           src="http://shelter.mahoro-net.org:8000/tsumugi"
+           src={AppConfigService.RADIO_URL}
            controls
            autoPlay>
       Your browser does not support the audio element.
