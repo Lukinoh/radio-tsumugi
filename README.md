@@ -3,7 +3,7 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 ## TODO
 - Style in React is "beh"
 - Use audio programmatically
-- Filtre dans la table de previously par range d'heure ou nom
+- deployment somewhere
 
 ## Config
 To configure API you just have to create a config.json in the public folder with the good endpoint.

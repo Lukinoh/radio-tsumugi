@@ -12,16 +12,20 @@ function RadioTsumugi() {
   const {Title} = Typography;
 
   useEffect(() => {
-    RadioTsumugiService.getSchedule()
-      .subscribe(newSchedule => {
-        console.log(newSchedule);
-        setSchedule(newSchedule);
-      });
+    // Order here by be important
+    // retrieveHistory is a synchronous observable, where as getSchedule is not
+    // So if we put retrieve history after the getSchedule it could erase the history
 
     RadioTsumugiService.retrieveHistory()
       .subscribe(newHistory => {
         console.log(newHistory);
         setHistory(newHistory);
+      });
+
+    RadioTsumugiService.getSchedule()
+      .subscribe(newSchedule => {
+        console.log(newSchedule);
+        setSchedule(newSchedule);
       });
   }, []);
 
