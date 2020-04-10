@@ -11,6 +11,9 @@ function FooterInfo() {
         <div>
           Communauté: <a href="https://forum-thalie.fr/">https://forum-thalie.fr/</a>
         </div>
+        <div>
+          Discord: <a href="https://forum-thalie.fr/discord/">https://forum-thalie.fr/discord</a>
+        </div>
       </Col>
     </Row>
   )

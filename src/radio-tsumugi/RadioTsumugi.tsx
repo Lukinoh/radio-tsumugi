@@ -1,6 +1,6 @@
 import React, {Fragment, useEffect, useState} from 'react';
 import {Col, Row, Typography} from 'antd';
-import Radio from './components/Radio';
+import Radio from './components/radio/Radio';
 import Program from './components/program/Program';
 import PreviousSongList from './components/PreviousSongList';
 import {ISchedule, ISong} from './services/schedule/ISchedule';

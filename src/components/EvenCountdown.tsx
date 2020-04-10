@@ -18,7 +18,10 @@ function EvenCountdown(props: EventCountdownProps) {
   // TODO: Format should be HH::mm:ss if number bigger than one hour
 
   return (
-    <Countdown valueStyle={style} value={props.event.endTime.toISOString()} format="mm:ss">
+    <Countdown prefix="~"
+               valueStyle={style}
+               value={props.event.startTime.toISOString()}
+               format="mm:ss">
     </Countdown>
   );
 }

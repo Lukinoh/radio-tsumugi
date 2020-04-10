@@ -8,7 +8,7 @@ function App() {
   const {Content, Footer} = Layout;
 
   return (
-    <Layout style={{padding: 16}}>
+    <Layout className="App-layout">
       <Content>
         <RadioTsumugi/>
       </Content>

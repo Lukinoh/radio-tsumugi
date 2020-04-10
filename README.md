@@ -1,9 +1,11 @@
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## TODO
-- Style in React is "beh"
+- Managing CSS is React is not easy, and with Antd it does not help.
 - Use audio programmatically
+- what happen when cache is full ?
 - deployment somewhere
+- as the localstorage is limited to 5MB, we should purge some element if the size is near 5MB
 
 ## Config
 To configure API you just have to create a config.json in the public folder with the good endpoint.

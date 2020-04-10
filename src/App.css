@@ -5,6 +5,10 @@
   background:#F0F2F5;
 }
 
+.App-layout {
+  padding: 16px
+}
+
 .Radio {
   background: transparent;
 }
@@ -25,4 +29,16 @@
 .Previously-search {
   width: 200px;
   margin-bottom: 8px;
+}
+
+.Radio-volume .ant-slider-rail {
+  background-color: white;
+}
+
+/* VolumeOn icon is layering of two icons.
+   As the icons have an alpha value, where they overlap, it is darker.
+   So to avoid that I set the color of the icon to be the same as the normal color.
+  */
+.volume-on-icon-color {
+  color: #535455;
 }

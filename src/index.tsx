@@ -6,11 +6,13 @@ import * as serviceWorker from './serviceWorker';
 import {AppConfigService} from './services/AppConfigService';
 import ConfigMissing from './components/ConfigMissing';
 
+// Some dependencies that I use Antd and Animate used in Antd are not too compatible yet with React.StrictMode, so they are commented
+
 const renderApp = () => {
   ReactDOM.render(
-    <React.StrictMode>
-      <App />
-    </React.StrictMode>,
+    // <React.StrictMode>
+      <App />,
+    // </React.StrictMode>,
     document.getElementById('root')
   );
 
@@ -22,9 +24,9 @@ const renderApp = () => {
 
 const renderAppConfigError = (message: any) => {
   ReactDOM.render(
-    <React.StrictMode>
-      <ConfigMissing message={message} />
-    </React.StrictMode>,
+    // <React.StrictMode>
+      <ConfigMissing message={message} />,
+    // </React.StrictMode>,
     document.getElementById('root')
   );
 };
