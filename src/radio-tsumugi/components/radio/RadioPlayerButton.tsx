@@ -5,8 +5,7 @@ import {faPlay, faStop} from '@fortawesome/free-solid-svg-icons';
 import {Player} from './RadioPlayer';
 
 export interface IRadioPlayerButton {
-  play: () => void;
-  stop: () => void;
+  onChange: (status: Player) => void;
   status: Player;
 }
 
@@ -14,12 +13,12 @@ function RadioPlayerButton(props: IRadioPlayerButton) {
 
   const PlayButton = (
     <Button icon={getFaIcon(faPlay)}
-            onClick={props.play} />
+            onClick={() => props.onChange(Player.StartLoading)} />
   );
 
   const StopButton = (
     <Button icon={getFaIcon(faStop)}
-            onClick={props.stop} />
+            onClick={() => props.onChange(Player.Stopped)} />
   );
 
   const LoadingButton = (
@@ -27,9 +26,10 @@ function RadioPlayerButton(props: IRadioPlayerButton) {
   );
 
   const buttons = {
-    [Player.Paused]: PlayButton,
+    [Player.Stopped]: PlayButton,
     [Player.Playing]: StopButton,
     [Player.Loading]: LoadingButton,
+    [Player.StartLoading]: LoadingButton,
     [Player.Error]: null
   }
 

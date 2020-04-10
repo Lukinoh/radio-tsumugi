@@ -5,10 +5,11 @@ import VolumeIcon from './VolumeIcon';
 import RadioPlayerButton from './RadioPlayerButton';
 
 export enum Player {
-  Loading,
-  Playing,
-  Paused,
-  Error
+  Playing = 'PlayerPlaying',
+  StartLoading = 'PlayerStartLoading',
+  Loading = 'PlayerLoading',
+  Stopped = 'PlayerStopped',
+  Error = 'PlayerError'
 }
 
 interface RadioPlayerProps {
@@ -16,36 +17,34 @@ interface RadioPlayerProps {
 }
 
 function RadioPlayer(props: RadioPlayerProps) {
-  const [player] = useState<HTMLAudioElement>(new Audio(AppConfigService.RADIO_URL))
-  const [state, setState] = useState<Player>(Player.Loading);
+  const [player] = useState<HTMLAudioElement>(new Audio())
+  const [state, setState] = useState<Player>(Player.Stopped);
   const [volume, setVolume] = useState<number>(50);
 
+  const {onError} = props;
+
   useEffect(() => {
-    play();
-  }, []);
-
-  const stop = () => {
-    player.pause();
-    setState(Player.Paused);
-  };
-
-  const play = () => {
-    setState(Player.Loading);
-    player.load();
-    player.play()
-      .then(() => setState(Player.Playing))
-      .catch((e) => {
-        setState(Player.Error)
-        props.onError(e.message)
-      });
-  };
+    if (state === Player.StartLoading) {
+      setState(Player.Loading)
+      // Firefox has some cache issue so we have to trick the cache...
+      // See https://stackoverflow.com/questions/28245407/audio-and-mozilla-firefox-cache-issue
+      player.src = AppConfigService.RADIO_URL + '?cache-buster=' + Date.now();
+      player.play()
+        .then(() => setState(Player.Playing))
+        .catch((e) => {
+          setState(Player.Error)
+          onError(e.message)
+        });
+    } else if (state === Player.Stopped) {
+      player.pause();
+    }
+  }, [state, onError, player]);
 
   return (
     <Row align="middle" justify="center" gutter={8}>
       <Col>
-        <RadioPlayerButton play={play}
-                           stop={stop}
-                           status={state}
+        <RadioPlayerButton status={state}
+                           onChange={(newState) => setState(newState)}
         />
       </Col>
       <Col flex="100px">
