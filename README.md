@@ -1,14 +1,17 @@
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## TODO
-- Managing CSS is React is not easy, and with Antd it does not help.
-- Use audio programmatically
-- what happen when cache is full ?
-- deployment somewhere
-- as the localstorage is limited to 5MB, we should purge some element if the size is near 5MB
+- Deployment somewhere
 
 ## Config
 To configure API you just have to create a config.json in the public folder with the good endpoint.
+
+## Info
+Localstorage has a limit of 5MB, we store all the previous song in the localstorage,
+so it may happen that in a long future the application crash.
+
+
+Calculation of localstorage based on sizes: https://gist.github.com/gaelbillon/3781122
 
 ## Available Scripts
 
