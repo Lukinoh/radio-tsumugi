@@ -19,7 +19,7 @@ interface RadioPlayerProps {
 function RadioPlayer(props: RadioPlayerProps) {
   const [player] = useState<HTMLAudioElement>(new Audio())
   const [state, setState] = useState<Player>(Player.Stopped);
-  const [volume, setVolume] = useState<number>(50);
+  const [volume, setVolume] = useState<number>(0.5);
 
   const {onError} = props;
 
@@ -40,6 +40,10 @@ function RadioPlayer(props: RadioPlayerProps) {
     }
   }, [state, onError, player]);
 
+  useEffect(() => {
+    player.volume = volume;
+  }, [volume, player]);
+
   return (
     <Row align="middle" justify="center" gutter={8}>
       <Col>
@@ -54,7 +58,7 @@ function RadioPlayer(props: RadioPlayerProps) {
           </Col>
           <Col flex="auto">
             <Slider className="Radio-volume"
-                    defaultValue={volume}
+                    defaultValue={volume * 100}
                     onChange={(volume: number | any) => setVolume(volume / 100)}
             />
           </Col>
