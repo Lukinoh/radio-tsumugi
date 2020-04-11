@@ -1,6 +1,7 @@
 import {Observable, of, throwError} from 'rxjs';
 import {ajax} from 'rxjs/ajax';
 import {mergeMap, tap} from 'rxjs/operators';
+import {getCacheBusterUrl} from './UtilityService';
 
 interface AppConfig {
   radioUrl: string;
@@ -16,7 +17,8 @@ export class AppConfigService {
   }
 
   static fetch(): Observable<AppConfig> {
-    return ajax.getJSON<AppConfig>('./config.json')
+    // Need to be sure to not get a cached version of the config
+    return ajax.getJSON<AppConfig>(getCacheBusterUrl('./config.json'))
       .pipe(
         mergeMap(appConfig => !appConfig ? throwError('No configuration for the application was found.') : of(appConfig)),
         tap((appConfig) => {

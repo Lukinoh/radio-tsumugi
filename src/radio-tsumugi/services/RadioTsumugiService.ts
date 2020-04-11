@@ -2,8 +2,8 @@ import {ajax} from 'rxjs/ajax';
 import {from, Observable, of} from 'rxjs';
 import {distinct, expand, map, mergeAll, retry, subscribeOn, take, tap, toArray} from 'rxjs/operators';
 import {async} from 'rxjs/internal/scheduler/async';
-import {toSchedule, toScheduleBridge} from './schedule/ScheduleParserService';
-import {ILocalStorageShow, ISchedule, ISong} from './schedule/ISchedule';
+import {toSchedule, toScheduleBridge} from './schedule-parser/ScheduleParserService';
+import {ILocalStorageShow, ISchedule, ISong} from './schedule-parser/ISchedule';
 import moment from 'moment';
 import {AppConfigService} from '../../services/AppConfigService';
 

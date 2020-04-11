@@ -2,23 +2,23 @@ import React, { Fragment } from 'react';
 import {Button} from 'antd';
 import {getFaIcon} from '../../../components/FaIcon';
 import {faPlay, faStop} from '@fortawesome/free-solid-svg-icons';
-import {Player} from './RadioPlayer';
+import {RadioPlayerState} from './RadioPlayerStateEnum';
 
 export interface IRadioPlayerButton {
-  onChange: (status: Player) => void;
-  status: Player;
+  onChange: (status: RadioPlayerState) => void;
+  status: RadioPlayerState;
 }
 
 function RadioPlayerButton(props: IRadioPlayerButton) {
 
   const PlayButton = (
     <Button icon={getFaIcon(faPlay)}
-            onClick={() => props.onChange(Player.StartLoading)} />
+            onClick={() => props.onChange(RadioPlayerState.StartLoading)} />
   );
 
   const StopButton = (
     <Button icon={getFaIcon(faStop)}
-            onClick={() => props.onChange(Player.Stopped)} />
+            onClick={() => props.onChange(RadioPlayerState.Stopped)} />
   );
 
   const LoadingButton = (
@@ -26,11 +26,11 @@ function RadioPlayerButton(props: IRadioPlayerButton) {
   );
 
   const buttons = {
-    [Player.Stopped]: PlayButton,
-    [Player.Playing]: StopButton,
-    [Player.Loading]: LoadingButton,
-    [Player.StartLoading]: LoadingButton,
-    [Player.Error]: null
+    [RadioPlayerState.Stopped]: PlayButton,
+    [RadioPlayerState.Playing]: StopButton,
+    [RadioPlayerState.Loading]: LoadingButton,
+    [RadioPlayerState.StartLoading]: LoadingButton,
+    [RadioPlayerState.Error]: null
   }
 
   return (

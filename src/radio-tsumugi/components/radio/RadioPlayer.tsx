@@ -3,14 +3,8 @@ import {Col, Row, Slider} from 'antd';
 import {AppConfigService} from '../../../services/AppConfigService';
 import VolumeIcon from './VolumeIcon';
 import RadioPlayerButton from './RadioPlayerButton';
-
-export enum Player {
-  Playing = 'PlayerPlaying',
-  StartLoading = 'PlayerStartLoading',
-  Loading = 'PlayerLoading',
-  Stopped = 'PlayerStopped',
-  Error = 'PlayerError'
-}
+import {RadioPlayerState} from './RadioPlayerStateEnum';
+import {getCacheBusterUrl} from '../../../services/UtilityService';
 
 interface RadioPlayerProps {
   onError: (message: string) => void;
@@ -18,24 +12,24 @@ interface RadioPlayerProps {
 
 function RadioPlayer(props: RadioPlayerProps) {
   const [player] = useState<HTMLAudioElement>(new Audio())
-  const [state, setState] = useState<Player>(Player.Stopped);
+  const [state, setState] = useState<RadioPlayerState>(RadioPlayerState.Stopped);
   const [volume, setVolume] = useState<number>(0.5);
 
   const {onError} = props;
 
   useEffect(() => {
-    if (state === Player.StartLoading) {
-      setState(Player.Loading)
+    if (state === RadioPlayerState.StartLoading) {
+      setState(RadioPlayerState.Loading)
       // Firefox has some cache issue so we have to trick the cache...
       // See https://stackoverflow.com/questions/28245407/audio-and-mozilla-firefox-cache-issue
-      player.src = AppConfigService.RADIO_URL + '?cache-buster=' + Date.now();
+      player.src = getCacheBusterUrl(AppConfigService.RADIO_URL);
       player.play()
-        .then(() => setState(Player.Playing))
+        .then(() => setState(RadioPlayerState.Playing))
         .catch((e) => {
-          setState(Player.Error)
+          setState(RadioPlayerState.Error)
           onError(e.message)
         });
-    } else if (state === Player.Stopped) {
+    } else if (state === RadioPlayerState.Stopped) {
       player.pause();
     }
   }, [state, onError, player]);

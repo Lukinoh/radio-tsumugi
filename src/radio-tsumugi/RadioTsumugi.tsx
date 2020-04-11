@@ -3,7 +3,7 @@ import {Col, Row, Typography} from 'antd';
 import Radio from './components/radio/Radio';
 import Program from './components/program/Program';
 import PreviousSongList from './components/PreviousSongList';
-import {ISchedule, ISong} from './services/schedule/ISchedule';
+import {ISchedule, ISong} from './services/schedule-parser/ISchedule';
 import {RadioTsumugiService} from './services/RadioTsumugiService';
 
 function RadioTsumugi() {

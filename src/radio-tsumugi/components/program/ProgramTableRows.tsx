@@ -1,5 +1,5 @@
 import React, {Fragment} from 'react';
-import {IEvent, ISchedule} from '../../services/schedule/ISchedule';
+import {IEvent, ISchedule} from '../../services/schedule-parser/ISchedule';
 import EvenCountdown from '../../../components/EvenCountdown';
 
 export interface IProgramTableRow {

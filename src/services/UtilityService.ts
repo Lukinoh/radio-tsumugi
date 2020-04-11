@@ -11,3 +11,8 @@ export const decodeHTML = (htmlString: string): string => {
   txt.innerHTML = htmlString;
   return txt.value;
 };
+
+// To use when you want to avoid having a file cached
+export const getCacheBusterUrl = (url: string): string => {
+  return url + '?cache-buster=' + Date.now();
+}

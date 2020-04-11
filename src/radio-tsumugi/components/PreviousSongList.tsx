@@ -1,6 +1,6 @@
 import React, {Fragment, useEffect, useState} from 'react';
 import {Input, Table, Tooltip, Typography} from 'antd';
-import {ISong} from '../services/schedule/ISchedule';
+import {ISong} from '../services/schedule-parser/ISchedule';
 import {filterBy} from '../../services/ObservableService';
 import {searchSubstr} from '../../services/UtilityService';
 

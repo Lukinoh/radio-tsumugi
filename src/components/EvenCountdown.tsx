@@ -1,6 +1,6 @@
 import React from 'react';
 import {Statistic} from 'antd';
-import {IEvent} from '../radio-tsumugi/services/schedule/ISchedule';
+import {IEvent} from '../radio-tsumugi/services/schedule-parser/ISchedule';
 
 interface EventCountdownProps {
   event: IEvent
