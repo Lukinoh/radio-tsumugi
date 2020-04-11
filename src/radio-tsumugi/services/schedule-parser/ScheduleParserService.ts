@@ -1,14 +1,13 @@
 import {ISchedule, IShow, ISong} from './ISchedule';
 import {IScheduleBridge, IShowBridge, ITrackBridge} from './IScheduleBridge';
 import moment, {Moment} from 'moment';
-import {decodeHTML} from '../../../services/UtilityService';
 
 export const toScheduleBridge = (response: string): IScheduleBridge => {
   // Not use eval...
   // return eval(response) as ISchedule;
 
   // Smart way to remove first and last character
-  return JSON.parse(decodeHTML(response).slice(1, -1)) as IScheduleBridge;
+  return JSON.parse(response.slice(1, -1)) as IScheduleBridge;
 };
 
 export const toSchedule = (bridgeSchedule: IScheduleBridge): ISchedule => {

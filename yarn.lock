@@ -4722,6 +4722,11 @@ fragment-cache@^0.2.1:
   dependencies:
     map-cache "^0.2.2"
 
+freezeframe@^4.1.3:
+  version "4.1.3"
+  resolved "http://localhost:4873/freezeframe/-/freezeframe-4.1.3.tgz#e68c167e4a73bc25763ca93d836521193fc8a9e1"
+  integrity sha512-AsR6x60OQ7atcbxgrkG/IX1b1D5ZXarOmc2a+jWIpXulPX0uihujiWGt/vCCh7baF0tesdm6tbKjKYZ0z5Dvow==
+
 fresh@0.5.2:
   version "0.5.2"
   resolved "http://localhost:4873/fresh/-/fresh-0.5.2.tgz#3d8cadd90d976569fa835ab1f8e4b23a105605a7"
@@ -6557,6 +6562,11 @@ loader-utils@^1.1.0, loader-utils@^1.2.3, loader-utils@^1.4.0:
     big.js "^5.2.2"
     emojis-list "^3.0.0"
     json5 "^1.0.1"
+
+localStorage-info@^1.0.0:
+  version "1.0.0"
+  resolved "http://localhost:4873/localStorage-info/-/localStorage-info-1.0.0.tgz#4a7b0f996b1d5bff5851c48601969c6db9caee65"
+  integrity sha1-SnsPmWsdW/9YUcSGAZacbbnK7mU=
 
 locate-path@^2.0.0:
   version "2.0.0"
@@ -9054,6 +9064,11 @@ react-error-overlay@^6.0.7:
   version "6.0.7"
   resolved "http://localhost:4873/react-error-overlay/-/react-error-overlay-6.0.7.tgz#1dcfb459ab671d53f660a991513cb2f0a0553108"
   integrity sha512-TAv1KJFh3RhqxNvhzxj6LeT5NWklP6rDr2a0jaTfsZ5wSZWHOGeqQyejUp3xxLfPt2UpyJEcVQB/zyPcmonNFA==
+
+react-freezeframe@^4.1.3:
+  version "4.1.3"
+  resolved "http://localhost:4873/react-freezeframe/-/react-freezeframe-4.1.3.tgz#88078650c39b248ed6089bdeeaf1c3232ac47772"
+  integrity sha512-6lxU9r9ZKnt5cxquZ9c1O5VPhhO1OtQvXngZeAxcOKVm46An6a6x7bTR+DMR1tsVz94Qs4boZjbviTzLPAjqgQ==
 
 react-is@^16.12.0, react-is@^16.7.0, react-is@^16.8.1, react-is@^16.8.4:
   version "16.13.1"

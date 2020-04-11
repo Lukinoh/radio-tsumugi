@@ -54,7 +54,16 @@ class RadioTsumugiServiceFactory {
   }
 
   private setHistoryToLocaleStorage(history: Array<ISong>) {
-    localStorage.setItem('history', JSON.stringify(history))
+    try {
+      localStorage.setItem('history', JSON.stringify(history))
+    } catch (e) {
+      if (e instanceof DOMException && e.name === "QuotaExceededError") {
+        // There will always at last one entry in the array when arriving in this error as I control the local storage
+        const lastEntry = history[history.length -1];
+        console.log('Quota of localstorage exceed... removing last entry of the history... ' + lastEntry.name);
+        this.setHistoryToLocaleStorage(history.slice(0, -1));
+      }
+    }
   }
 }
 

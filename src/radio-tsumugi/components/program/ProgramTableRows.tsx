@@ -1,6 +1,7 @@
 import React, {Fragment} from 'react';
 import {IEvent, ISchedule} from '../../services/schedule-parser/ISchedule';
 import EvenCountdown from '../../../components/EvenCountdown';
+import EventDisplay from "../../../components/EventDisplay";
 
 export interface IProgramTableRow {
   key: number;
@@ -11,9 +12,7 @@ export interface IProgramTableRow {
 }
 
 const EventName = (row: IProgramTableRow) => (
-  <Fragment>
-    {row.event.name}
-  </Fragment>
+  <EventDisplay name={row.event.name}/>
 );
 
 const LabelName = (row: IProgramTableRow) => (

@@ -3,6 +3,7 @@ import {Input, Table, Tooltip, Typography} from 'antd';
 import {ISong} from '../services/schedule-parser/ISchedule';
 import {filterBy} from '../../services/ObservableService';
 import {searchSubstr} from '../../services/UtilityService';
+import EventDisplay from "../../components/EventDisplay";
 
 type PreviousSongListProps = {
   history: Array<ISong>;
@@ -29,6 +30,10 @@ function PreviousSongList(props: PreviousSongListProps) {
     </Tooltip>
   );
 
+  const SongColumnRender = (text: string) => (
+    <EventDisplay name={text}/>
+  )
+
   const TimeColumn = (
     <Column className="nowrap"
             title="Time"
@@ -42,6 +47,7 @@ function PreviousSongList(props: PreviousSongListProps) {
     <Column title="Name"
             dataIndex="name"
             key="startTime"
+            render={SongColumnRender}
     />
   );
 

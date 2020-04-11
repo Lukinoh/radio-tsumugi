@@ -1,17 +1,21 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# Radio tsumugi
+
+## Why  ?
+I was listening the radio on the [offical website](https://tsumugi.forum-thalie.fr/) official or using Windows media player, but sometimes I wanted to have the name of the songs.
+So I look at the endpoint they provide and decided to develop a small frontend for it.
+
+## Information
+To configure API you just have to create a config.json in the public folder with the good endpoint.
 
 ## TODO
 - Deployment somewhere
+- (optimal) Add tests...
+- (optional) Maybe redux may be useful for sharing the state of the radio and the volume
+- (optional) Custom typings for ReactFreeze should be declare more correctly
 
-## Config
-To configure API you just have to create a config.json in the public folder with the good endpoint.
+----
 
-## Info
-Localstorage has a limit of 5MB, we store all the previous song in the localstorage,
-so it may happen that in a long future the application crash.
-
-
-Calculation of localstorage based on sizes: https://gist.github.com/gaelbillon/3781122
+This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
 

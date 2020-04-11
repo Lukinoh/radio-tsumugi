@@ -1,18 +1,21 @@
-import React, {useState, Fragment} from 'react';
+import React, {Fragment, useRef, useState} from 'react';
 import image from '../../../assets/tsumugi.gif';
 import {Alert, Card, Typography} from 'antd';
 import RadioPlayer from './RadioPlayer';
+import ReactFreezeframe, {ReactFreezeframeElement} from 'react-freezeframe';
+import {RadioPlayerState} from "./RadioPlayerStateEnum";
 
 function Radio() {
   const [messageError, setMessageError] = useState<string>();
+  const gif = useRef<ReactFreezeframeElement>();
 
   const {Title} = Typography;
 
-  const Cover = (
-    <img src={image}
-         className="Radio-image"
-         alt="logo" />
-   );
+  const CoverGif = (
+    <div className="Radio-image">
+      <ReactFreezeframe ref={gif} src={image} options={{trigger: false}} />
+    </div>
+  );
 
   const RadioError = (
     <Alert showIcon
@@ -24,6 +27,15 @@ function Radio() {
     />
   );
 
+  const manageCoverGif = (state: RadioPlayerState) => {
+    const cGif = gif.current!; // Cannot be undefined at this point
+    if (state === RadioPlayerState.Playing) {
+      cGif.start()
+    } else {
+      cGif.stop()
+    }
+  };
+
   const hasError = messageError !== undefined;
 
   return (
@@ -31,10 +43,14 @@ function Radio() {
       <Title level={2}>
         Player
       </Title>
+
       <Card className="Radio"
             size="small"
-            cover={Cover}>
-        {!hasError && <RadioPlayer onError={(message: string) => setMessageError(message)} />}
+            cover={CoverGif}>
+        {!hasError && <RadioPlayer
+            onError={(message: string) => setMessageError(message)}
+            onStateChange={(state: RadioPlayerState) => manageCoverGif(state)}
+        />}
         {hasError && RadioError}
       </Card>
     </Fragment>

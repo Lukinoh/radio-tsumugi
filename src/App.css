@@ -20,9 +20,9 @@
   background: transparent;
 }
 
-.Radio-image {
+.Radio-image .ff-canvas,
+.Radio-image .ff-image {
   border-radius: 50px !important;
-  background-size: cover !important;
 }
 
 /* RadioPlayer component */

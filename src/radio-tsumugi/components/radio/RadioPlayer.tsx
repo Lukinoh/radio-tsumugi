@@ -8,6 +8,7 @@ import {getCacheBusterUrl} from '../../../services/UtilityService';
 
 interface RadioPlayerProps {
   onError: (message: string) => void;
+  onStateChange: (state: RadioPlayerState) => void;
 }
 
 function RadioPlayer(props: RadioPlayerProps) {
@@ -15,7 +16,7 @@ function RadioPlayer(props: RadioPlayerProps) {
   const [state, setState] = useState<RadioPlayerState>(RadioPlayerState.Stopped);
   const [volume, setVolume] = useState<number>(0.5);
 
-  const {onError} = props;
+  const {onError, onStateChange} = props;
 
   useEffect(() => {
     if (state === RadioPlayerState.StartLoading) {
@@ -37,6 +38,10 @@ function RadioPlayer(props: RadioPlayerProps) {
   useEffect(() => {
     player.volume = volume;
   }, [volume, player]);
+
+  useEffect(() => {
+    onStateChange(state);
+  }, [state, onStateChange]);
 
   return (
     <Row align="middle" justify="center" gutter={8}>
