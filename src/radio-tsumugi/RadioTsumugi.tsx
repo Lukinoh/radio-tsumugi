@@ -46,15 +46,15 @@ function RadioTsumugi() {
       </Row>
       <Row justify="center" gutter={16}>
         <Col flex="400px">
-          <Radio/>
+          <Radio />
         </Col>
         <Col flex="500px">
-          <Program schedule={schedule}/>
+          <Program schedule={schedule} />
         </Col>
       </Row>
       <Row justify="center">
         <Col flex="900px">
-          <PreviousSongList history={history}/>
+          <PreviousSongList history={history} />
         </Col>
       </Row>
     </Fragment>
