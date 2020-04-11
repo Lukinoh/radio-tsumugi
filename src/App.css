@@ -5,16 +5,19 @@
   background:#F0F2F5;
 }
 
+/* Global */
+.nowrap {
+  white-space: nowrap;
+}
+
+/* App component */
 .App-layout {
   padding: 16px
 }
 
+/* Radio component */
 .Radio {
   background: transparent;
-}
-
-.Radio-player {
-  width: 100%;
 }
 
 .Radio-image {
@@ -22,23 +25,21 @@
   background-size: cover !important;
 }
 
-.nowrap {
-  white-space: nowrap;
+/* RadioPlayer component */
+.RadioPlayer-volume .ant-slider-rail {
+  background-color: white;
 }
-
-.Previously-search {
+/* PreviousSongList component */
+.PreviousSongList-search {
   width: 200px;
   margin-bottom: 8px;
 }
 
-.Radio-volume .ant-slider-rail {
-  background-color: white;
-}
-
-/* VolumeOn icon is layering of two icons.
+/* VolumeIcon component */
+.VolumeIcon-color {
+  /* VolumeOn icon is layering of two icons.
    As the icons have an alpha value, where they overlap, it is darker.
    So to avoid that I set the color of the icon to be the same as the normal color.
   */
-.volume-on-icon-color {
   color: #535455;
 }

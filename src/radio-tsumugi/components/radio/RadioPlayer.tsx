@@ -51,7 +51,7 @@ function RadioPlayer(props: RadioPlayerProps) {
             <VolumeIcon volume={volume} />
           </Col>
           <Col flex="auto">
-            <Slider className="Radio-volume"
+            <Slider className="RadioPlayer-volume"
                     defaultValue={volume * 100}
                     onChange={(volume: number | any) => setVolume(volume / 100)}
             />

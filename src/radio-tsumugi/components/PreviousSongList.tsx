@@ -50,7 +50,7 @@ function PreviousSongList(props: PreviousSongListProps) {
       <Title level={2}>Previously</Title>
 
       <Search allowClear
-              className="Previously-search"
+              className="PreviousSongList-search"
               placeholder="Search song in history"
               onChange={value => setFilteredHistory(value.target.value)}
       />

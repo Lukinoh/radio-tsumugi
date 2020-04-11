@@ -16,13 +16,13 @@ function VolumeIcon(props: VolumeIconProps) {
   )
 
   const VolumeOffIcon = (
-    <FontAwesomeIcon className="" size="lg" icon={faVolumeOff} />
+    <FontAwesomeIcon size="lg" icon={faVolumeOff} />
   );
 
   const VolumeIcon = props.volume === 0 ? VolumeOffIcon : VolumeOnIcon
 
   return (
-    <span className="fa-layers fa-fw volume-on-icon-color">
+    <span className="fa-layers fa-fw VolumeIcon-color">
       {VolumeIcon}
     </span>
   )
