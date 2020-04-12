@@ -2,6 +2,7 @@ import React, {Fragment} from 'react';
 import {IEvent, ISchedule} from '../../services/schedule-parser/ISchedule';
 import EvenCountdown from '../../../components/EvenCountdown';
 import EventDisplay from "../../../components/EventDisplay";
+import {format_HHmm} from "../../../services/ConstantService";
 
 export interface IProgramTableRow {
   key: number;
@@ -29,7 +30,7 @@ const LabelWithCountdown = (row: IProgramTableRow) => (
 
 const LabelWithTime = (row: IProgramTableRow) => (
   <Fragment>
-    {row.label} at <div>{row.event.startTime.format('LTS')} </div>
+    {row.label} at <div>{row.event.startTime.format(format_HHmm)} </div>
   </Fragment>
 );
 

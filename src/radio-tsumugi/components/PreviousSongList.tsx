@@ -4,6 +4,7 @@ import {ISong} from '../services/schedule-parser/ISchedule';
 import {filterBy} from '../../services/ObservableService';
 import {searchSubstr} from '../../services/UtilityService';
 import EventDisplay from "../../components/EventDisplay";
+import {format_HHmmSS} from "../../services/ConstantService";
 
 type PreviousSongListProps = {
   history: Array<ISong>;
@@ -25,7 +26,7 @@ function PreviousSongList(props: PreviousSongListProps) {
   };
 
   const TimeColumnRender = (text: string, song: ISong) => (
-    <Tooltip title={song.startTime.format('LTS')}>
+    <Tooltip title={song.startTime.format(format_HHmmSS)}>
       <span>{song.startTime.fromNow()}</span>
     </Tooltip>
   );
