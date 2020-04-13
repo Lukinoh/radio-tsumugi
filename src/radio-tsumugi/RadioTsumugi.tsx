@@ -42,10 +42,10 @@ function RadioTsumugi() {
   return (
     <Fragment>
       <Row justify="center">
-        <Title>Radio Tsumugi</Title>
+        <Title level={2}>Radio Tsumugi</Title>
       </Row>
-      <Row justify="center" gutter={16}>
-        <Col flex="400px">
+      <Row justify="center" gutter={[8, 8]}>
+        <Col flex="400px" className="RadioTsumugi-player-width-management">
           <Radio />
         </Col>
         <Col flex="500px">

@@ -54,7 +54,7 @@ function PreviousSongList(props: PreviousSongListProps) {
 
   return (
     <Fragment>
-      <Title level={2}>Previously</Title>
+      <Title level={3}>Previously</Title>
 
       <Search allowClear
               className="PreviousSongList-search"

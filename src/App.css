@@ -20,6 +20,13 @@
   padding: 16px
 }
 
+/* RadioTsugumi component */
+@media screen and (max-width: 950px) {
+  .RadioTsumugi-player-width-management {
+    flex: 0 0 500px !important;
+  }
+}
+
 /* Radio component */
 .Radio {
   background: transparent;
