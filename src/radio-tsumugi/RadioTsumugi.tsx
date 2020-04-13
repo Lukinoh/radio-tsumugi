@@ -52,7 +52,7 @@ function RadioTsumugi() {
           <Program schedule={schedule} />
         </Col>
       </Row>
-      <Row justify="center">
+      <Row justify="center" gutter={8}>
         <Col flex="900px">
           <PreviousSongList history={history} />
         </Col>

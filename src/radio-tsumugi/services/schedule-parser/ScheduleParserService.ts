@@ -20,8 +20,8 @@ export const toSchedule = (bridgeSchedule: IScheduleBridge): ISchedule => {
 
     },
     show: {
-      current: getShow(bridgeSchedule.currentShow[0], bridgeSchedule.timezoneOffset),
-      next: getShow(bridgeSchedule.nextShow[0], bridgeSchedule.timezoneOffset)
+      current: getShow(bridgeSchedule.currentShow[0]),
+      next: getShow(bridgeSchedule.nextShow[0])
     },
     getNextSongIn: function(): number {
       return this.song.next.startTime.diff(this.time, 'milliseconds');
@@ -40,11 +40,11 @@ const getSong = (track: ITrackBridge, offsetInSeconds: number | string): ISong =
   }
 };
 
-const getShow = (show: IShowBridge, offsetInSeconds: number | string): IShow => {
+const getShow = (show: IShowBridge): IShow => {
   return {
     name: show.name,
-    startTime: getTime(show.starts, offsetInSeconds),
-    endTime: getTime(show.starts, offsetInSeconds)
+    startTime: getTime(show.starts, 0),
+    endTime: getTime(show.starts, 0)
   }
 };
 
