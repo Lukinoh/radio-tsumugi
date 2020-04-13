@@ -47,10 +47,21 @@
 }
 
 /* VolumeIcon component */
-.VolumeIcon-color {
-  /* VolumeOn icon is layering of two icons.
+.VolumeIcon {
+  /*
+   VolumeOn icon is layering of two icons.
    As the icons have an alpha value, where they overlap, it is darker.
    So to avoid that I set the color of the icon to be the same as the normal color.
   */
   color: #535455;
+
+  /*
+    Align font-size on 'large' of ant size
+   */
+  font-size: 18px;
+
+  /*
+    Align the icon correctly (with the volume in this case)
+   */
+  display: flex;
 }

@@ -13,16 +13,19 @@ function RadioPlayerButton(props: IRadioPlayerButton) {
 
   const PlayButton = (
     <Button icon={getFaIcon(faPlay)}
+            size="large"
             onClick={() => props.onChange(RadioPlayerState.StartLoading)} />
   );
 
   const StopButton = (
     <Button icon={getFaIcon(faStop)}
+            size="large"
             onClick={() => props.onChange(RadioPlayerState.Stopped)} />
   );
 
   const LoadingButton = (
-    <Button loading={true} />
+    <Button loading={true}
+            size="large" />
   );
 
   const buttons = {

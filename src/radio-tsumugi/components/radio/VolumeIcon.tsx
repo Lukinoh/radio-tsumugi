@@ -22,7 +22,7 @@ function VolumeIcon(props: VolumeIconProps) {
   const VolumeIcon = props.volume === 0 ? VolumeOffIcon : VolumeOnIcon
 
   return (
-    <span className="fa-layers fa-fw VolumeIcon-color">
+    <span className="fa-layers fa-fw VolumeIcon">
       {VolumeIcon}
     </span>
   )
