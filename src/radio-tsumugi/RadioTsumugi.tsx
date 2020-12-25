@@ -18,13 +18,13 @@ function RadioTsumugi() {
 
     RadioTsumugiService.retrieveHistory()
       .subscribe(newHistory => {
-        console.log(newHistory);
+        // console.log(newHistory);
         setHistory(newHistory);
       });
 
     RadioTsumugiService.getSchedule()
       .subscribe(newSchedule => {
-        console.log(newSchedule);
+        // console.log(newSchedule);
         setSchedule(newSchedule);
       });
   }, []);
@@ -33,7 +33,7 @@ function RadioTsumugi() {
     if (schedule) {
       RadioTsumugiService.saveHistory(schedule, history)
         .subscribe(newHistory => {
-          console.log(newHistory);
+          // console.log(newHistory);
           setHistory(newHistory);
         });
     }

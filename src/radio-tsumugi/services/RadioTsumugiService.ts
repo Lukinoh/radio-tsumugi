@@ -1,6 +1,6 @@
 import {ajax} from 'rxjs/ajax';
 import {from, Observable, of} from 'rxjs';
-import {distinct, expand, map, mergeAll, retry, subscribeOn, take, tap, toArray} from 'rxjs/operators';
+import {distinct, expand, map, mergeAll, retry, subscribeOn, take, toArray} from 'rxjs/operators';
 import {async} from 'rxjs/internal/scheduler/async';
 import {toSchedule, toScheduleBridge} from './schedule-parser/ScheduleParserService';
 import {ILocalStorageShow, ISchedule, ISong} from './schedule-parser/ISchedule';
@@ -43,7 +43,7 @@ class RadioTsumugiServiceFactory {
       .pipe(
         distinct(song => song.startTime.toISOString()),
         toArray(),
-        tap(history => this.setHistoryToLocaleStorage(history))
+        map(history => this.setHistoryToLocaleStorage(history))
       )
   }
 
@@ -53,7 +53,8 @@ class RadioTsumugiServiceFactory {
     return localStorage.getItem('history');
   }
 
-  private setHistoryToLocaleStorage(history: Array<ISong>) {
+  private setHistoryToLocaleStorage(history: Array<ISong>): Array<ISong> {
+    let savedHistory = history;
     try {
       localStorage.setItem('history', JSON.stringify(history))
     } catch (e) {
@@ -61,9 +62,11 @@ class RadioTsumugiServiceFactory {
         // There will always at last one entry in the array when arriving in this error as I control the local storage
         const lastEntry = history[history.length -1];
         console.log('Quota of localstorage exceed... removing last entry of the history... ' + lastEntry.name);
-        this.setHistoryToLocaleStorage(history.slice(0, -1));
+        savedHistory = this.setHistoryToLocaleStorage(history.slice(0, -1));
       }
     }
+
+    return savedHistory;
   }
 }
 
