@@ -12,18 +12,15 @@ type PreviousSongListProps = {
 
 function PreviousSongList(props: PreviousSongListProps) {
   const [history, setHistory] = useState<Array<ISong>>(props.history);
+  const [search, setSearch] = useState<string>('');
   const { Column } = Table;
   const { Title } = Typography;
   const { Search } = Input;
 
   useEffect(() => {
-    setHistory(props.history);
-  }, [props.history]);
-
-  const setFilteredHistory = (search: string): void => {
     filterBy(props.history, song => searchSubstr(song.name, search))
-      .subscribe(newHistory => setHistory(newHistory));
-  };
+        .subscribe(newHistory => setHistory(newHistory));
+  }, [props.history, search]);
 
   const TimeColumnRender = (text: string, song: ISong) => (
     <Tooltip title={song.startTime.format(format_HHmmSS)}>
@@ -59,7 +56,7 @@ function PreviousSongList(props: PreviousSongListProps) {
       <Search allowClear
               className="PreviousSongList-search"
               placeholder="Search song in history"
-              onChange={value => setFilteredHistory(value.target.value)}
+              onChange={value => setSearch(value.target.value)}
       />
 
       <Table dataSource={history}
