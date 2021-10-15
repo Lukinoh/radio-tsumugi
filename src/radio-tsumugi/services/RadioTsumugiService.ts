@@ -1,7 +1,18 @@
 import {ajax} from 'rxjs/ajax';
-import {from, Observable, of} from 'rxjs';
-import {distinct, expand, map, mergeAll, retry, subscribeOn, take, toArray} from 'rxjs/operators';
-import {async} from 'rxjs/internal/scheduler/async';
+import {
+    asyncScheduler,
+    distinct,
+    expand,
+    from,
+    map,
+    mergeAll,
+    Observable,
+    of,
+    retry,
+    subscribeOn,
+    take,
+    toArray
+} from 'rxjs';
 import {toSchedule, toScheduleBridge} from './schedule-parser/ScheduleParserService';
 import {ILocalStorageShow, ISchedule, ISong} from './schedule-parser/ISchedule';
 import moment from 'moment';
@@ -10,13 +21,14 @@ import {AppConfigService} from '../../services/AppConfigService';
 class RadioTsumugiServiceFactory {
 
   getSchedule(delay: number = 0): Observable<ISchedule> {
-    return ajax({
-      url: AppConfigService.SCHEDULE_URL,
-      responseType: 'text'
+    return ajax<string>({
+      crossDomain: true,
+      responseType: 'text',
+      url: AppConfigService.SCHEDULE_URL
     }).pipe(
       // Sometimes a random cors error appears, so we have to retry to call it.
       retry(),
-      subscribeOn(async, delay),
+      subscribeOn(asyncScheduler, delay),
       map(({response}) => toScheduleBridge(response)),
       map((scheduleBridge) => toSchedule(scheduleBridge)),
       expand((schedule) => this.getSchedule(schedule.getNextSongIn()).pipe(take(1))),

@@ -14,6 +14,9 @@ function FooterInfo() {
         <div>
           Discord: <a target="_blank" rel="noreferrer" href="https://forum-thalie.fr/discord/">https://forum-thalie.fr/discord</a>
         </div>
+        <div>
+          GitLab: <a target="_blank" rel="noreferrer" href="https://lab.shelter.moe/Lukino/radio-tsumugi">https://lab.shelter.moe/Lukino/radio-tsumugi</a>
+        </div>
       </Col>
     </Row>
   )

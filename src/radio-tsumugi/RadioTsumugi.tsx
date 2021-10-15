@@ -1,4 +1,4 @@
-import React, {Fragment, useEffect, useState} from 'react';
+import React, {Fragment, useCallback, useEffect, useState} from 'react';
 import {Col, Row, Typography} from 'antd';
 import Radio from './components/radio/Radio';
 import Program from './components/program/Program';
@@ -29,7 +29,7 @@ function RadioTsumugi() {
       });
   }, []);
 
-  useEffect(() => {
+  useCallback(() => {
     if (schedule) {
       RadioTsumugiService.saveHistory(schedule, history)
         .subscribe(newHistory => {
@@ -37,7 +37,7 @@ function RadioTsumugi() {
           setHistory(newHistory);
         });
     }
-  }, [schedule]);
+  }, [schedule, history]);
 
   return (
     <Fragment>

@@ -43,14 +43,13 @@
 }
 /* PreviousSongList component */
 .PreviousSongList-search {
-  width: 200px;
+  width: 210px;
   margin-bottom: 8px;
 }
 
 .EventCountdown .ant-statistic-content{
   display: inline-block ;
   font-size: 14px;
-  color: rgba(0, 0, 0, 0.65);
 }
 
 /* VolumeIcon component */
@@ -60,7 +59,7 @@
    As the icons have an alpha value, where they overlap, it is darker.
    So to avoid that I set the color of the icon to be the same as the normal color.
   */
-  color: #535455;
+  color: #262626;
 
   /*
     Align font-size on 'large' of ant size

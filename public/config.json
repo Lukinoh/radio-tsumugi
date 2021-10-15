@@ -1,4 +1,4 @@
 {
   "radioUrl": "https://radio.mahoro-net.org/streams/tsumugi",
-  "scheduleUrl": "https://cors.bridged.cc/https://tsumugi.forum-thalie.fr/get_api_result.php"
+  "scheduleUrl": "https://api.codetabs.com/v1/proxy?quest=https://tsumugi.forum-thalie.fr/get_api_result.php"
 }
