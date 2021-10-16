@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from 'react';
+import React, {useEffect, useMemo, useState} from 'react';
 import {Col, Row, Slider} from 'antd';
 import {AppConfigService} from '../../../services/AppConfigService';
 import VolumeIcon from './VolumeIcon';
@@ -36,12 +36,12 @@ function RadioPlayer(props: RadioPlayerProps) {
   }, [state, onError, player]);
 
   useEffect(() => {
-    player.volume = volume;
-  }, [volume, player]);
-
-  useEffect(() => {
     onStateChange(state);
   }, [state, onStateChange]);
+
+  useMemo(() => {
+    player.volume = volume;
+  }, [player, volume])
 
   return (
     <Row align="middle" justify="center" gutter={8}>

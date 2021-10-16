@@ -1,4 +1,4 @@
-import React, {Fragment, useCallback, useEffect, useState} from 'react';
+import React, {Fragment, useEffect, useRef, useState} from 'react';
 import {Col, Row, Typography} from 'antd';
 import Radio from './components/radio/Radio';
 import Program from './components/program/Program';
@@ -8,7 +8,7 @@ import {RadioTsumugiService} from './services/RadioTsumugiService';
 
 function RadioTsumugi() {
   const [schedule, setSchedule] = useState<ISchedule>();
-  const [history, setHistory] = useState<Array<ISong>>([]);
+  const history = useRef<Array<ISong>>([]);
   const {Title} = Typography;
 
   useEffect(() => {
@@ -19,7 +19,7 @@ function RadioTsumugi() {
     RadioTsumugiService.retrieveHistory()
       .subscribe(newHistory => {
         // console.log(newHistory);
-        setHistory(newHistory);
+        history.current = newHistory;
       });
 
     RadioTsumugiService.getSchedule()
@@ -29,15 +29,13 @@ function RadioTsumugi() {
       });
   }, []);
 
-  useCallback(() => {
-    if (schedule) {
-      RadioTsumugiService.saveHistory(schedule, history)
-        .subscribe(newHistory => {
-          // console.log(newHistory);
-          setHistory(newHistory);
-        });
-    }
-  }, [schedule, history]);
+  if (schedule) {
+    RadioTsumugiService.saveHistory(schedule, history.current)
+      .subscribe(newHistory => {
+        // console.log(newHistory);
+        history.current = newHistory;
+      });
+  }
 
   return (
     <Fragment>
@@ -54,7 +52,7 @@ function RadioTsumugi() {
       </Row>
       <Row justify="center" gutter={8}>
         <Col flex="900px">
-          <PreviousSongList history={history} />
+          <PreviousSongList history={history.current} />
         </Col>
       </Row>
     </Fragment>
