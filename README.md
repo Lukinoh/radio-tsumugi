@@ -1,3 +1,7 @@
+**Tsumugi Radio are using a radio caster, it provide a good radio player. So I decide to not adapt this application. Hence, the application is now deprecated.**
+
+To listen to the radio go to https://azuracast.mahoro-net.org/public/tsumugi
+
 # Radio tsumugi
 
 ## Why  ?
